@@ -1,8 +1,8 @@
-FROM continuumio/miniconda:4.6.14
+FROM continuumio/miniconda3
+LABEL description="Base docker image with continuumio/miniconda3"
+ARG ENV_NAME="postrmats"
 
-# Install procps so that Nextflow can poll CPU usage
-RUN apt-get update && apt-get install -y procps && apt-get clean -y
-
+RUN apt-get update
 RUN pip install pandas
 
 ADD ./sampleCountsSave.sh /usr/local/bin/
